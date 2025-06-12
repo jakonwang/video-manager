@@ -1,0 +1,647 @@
+# Chinese (China) language file for Video Manager
+msgid ""
+msgstr ""
+"Project-Id-Version: Video Manager 1.0.0\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"X-Generator: Poedit\n"
+"X-Domain: video-manager\n"
+
+msgid "Video Manager"
+msgstr "视频管理器"
+
+msgid "Upload Videos"
+msgstr "视频上传"
+
+msgid "Video List"
+msgstr "视频列表"
+
+msgid "Categories"
+msgstr "分类管理"
+
+msgid "Upload Logs"
+msgstr "上传日志"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Save Changes"
+msgstr "保存更改"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Add New"
+msgstr "添加新项"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Filter"
+msgstr "筛选"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "Refresh"
+msgstr "刷新"
+
+msgid "Loading..."
+msgstr "加载中..."
+
+msgid "Success"
+msgstr "成功"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Warning"
+msgstr "警告"
+
+msgid "Upload Videos"
+msgstr "上传视频"
+
+msgid "Select Files"
+msgstr "选择文件"
+
+msgid "Drag and drop video files here or click to select files"
+msgstr "拖拽视频文件到这里或点击选择文件"
+
+msgid "Supports multiple file upload, maximum file size per file: %s"
+msgstr "支持多文件同时上传，单文件最大 %s"
+
+msgid "Start Upload"
+msgstr "开始上传"
+
+msgid "Pause Upload"
+msgstr "暂停上传"
+
+msgid "Clear Queue"
+msgstr "清空队列"
+
+msgid "Upload Queue"
+msgstr "上传队列"
+
+msgid "Total Files"
+msgstr "总文件数"
+
+msgid "Completed"
+msgstr "已完成"
+
+msgid "Uploading"
+msgstr "上传中"
+
+msgid "Failed"
+msgstr "失败"
+
+msgid "File uploaded successfully"
+msgstr "文件上传成功"
+
+msgid "Chunk uploaded successfully"
+msgstr "分片上传成功"
+
+msgid "File upload failed"
+msgstr "文件上传失败"
+
+msgid "Upload successful"
+msgstr "上传成功"
+
+msgid "Upload failed"
+msgstr "上传失败"
+
+msgid "No files to upload"
+msgstr "没有文件需要上传"
+
+msgid "Uploading..."
+msgstr "上传中..."
+
+msgid "Paused"
+msgstr "已暂停"
+
+msgid "Waiting"
+msgstr "等待中"
+
+msgid "Video Title"
+msgstr "视频标题"
+
+msgid "File Name"
+msgstr "文件名"
+
+msgid "File Size"
+msgstr "文件大小"
+
+msgid "Category"
+msgstr "分类"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Upload Time"
+msgstr "上传时间"
+
+msgid "Actions"
+msgstr "操作"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Download"
+msgstr "下载"
+
+msgid "Used"
+msgstr "已使用"
+
+msgid "Unused"
+msgstr "未使用"
+
+msgid "All Status"
+msgstr "所有状态"
+
+msgid "All Categories"
+msgstr "所有分类"
+
+msgid "No Category"
+msgstr "无分类"
+
+msgid "Bulk Actions"
+msgstr "批量操作"
+
+msgid "Mark as Used"
+msgstr "标记为已使用"
+
+msgid "Mark as Unused"
+msgstr "标记为未使用"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "Video deleted successfully"
+msgstr "视频删除成功"
+
+msgid "Video deletion failed"
+msgstr "视频删除失败"
+
+msgid "Video does not exist"
+msgstr "视频不存在"
+
+msgid "Status updated successfully"
+msgstr "状态更新成功"
+
+msgid "Status update failed"
+msgstr "状态更新失败"
+
+msgid "Category Name"
+msgstr "分类名称"
+
+msgid "Category Slug"
+msgstr "分类别名"
+
+msgid "Category Description"
+msgstr "分类描述"
+
+msgid "Add Category"
+msgstr "添加分类"
+
+msgid "Edit Category"
+msgstr "编辑分类"
+
+msgid "Delete Category"
+msgstr "删除分类"
+
+msgid "Category created successfully"
+msgstr "分类创建成功"
+
+msgid "Category creation failed, slug may already exist"
+msgstr "分类创建失败，别名可能已存在"
+
+msgid "Category updated successfully"
+msgstr "分类更新成功"
+
+msgid "Category update failed"
+msgstr "分类更新失败"
+
+msgid "Category deleted successfully"
+msgstr "分类删除成功"
+
+msgid "Category deletion failed"
+msgstr "分类删除失败"
+
+msgid "Category does not exist"
+msgstr "分类不存在"
+
+msgid "Please enter category name"
+msgstr "请输入分类名称"
+
+msgid "Are you sure you want to delete this category?"
+msgstr "确定要删除这个分类吗？"
+
+msgid "Deleting this category will move all videos in it to 'No Category' status. This action cannot be undone."
+msgstr "删除后该分类下的所有视频将归为"无分类"状态，此操作不可撤销。"
+
+msgid "Video Category"
+msgstr "视频分类"
+
+msgid "No video available"
+msgstr "暂无可用视频"
+
+msgid "No video available at the moment, please try again later"
+msgstr "暂时没有可用的视频，请稍后再试"
+
+msgid "Download Confirmation"
+msgstr "下载确认"
+
+msgid "Download Warning"
+msgstr "下载警告"
+
+msgid "This video will no longer be displayed after download. Each user can only download once per category."
+msgstr "下载后此视频将不再对您显示。每个分类每个用户只能下载一次。"
+
+msgid "Are you sure you want to download this video?"
+msgstr "确定要下载这个视频吗？"
+
+msgid "Confirm Download"
+msgstr "确认下载"
+
+msgid "Copy Link"
+msgstr "复制链接"
+
+msgid "Link copied to clipboard"
+msgstr "链接已复制到剪贴板"
+
+msgid "Download successful! Video saved."
+msgstr "下载成功！视频已保存"
+
+msgid "Download complete"
+msgstr "下载完成"
+
+msgid "You have already downloaded the video from this category. Thank you for using our service!"
+msgstr "您已下载了此分类的视频。感谢使用我们的服务！"
+
+msgid "Download recorded successfully"
+msgstr "下载记录成功"
+
+msgid "Failed to record download"
+msgstr "记录下载失败"
+
+msgid "Action Type"
+msgstr "操作类型"
+
+msgid "Message"
+msgstr "消息内容"
+
+msgid "Time"
+msgstr "时间"
+
+msgid "All Actions"
+msgstr "所有操作"
+
+msgid "Export Logs"
+msgstr "导出日志"
+
+msgid "Clear Logs"
+msgstr "清空日志"
+
+msgid "Log Details"
+msgstr "日志详情"
+
+msgid "Successful Operations"
+msgstr "成功操作"
+
+msgid "Error Operations"
+msgstr "错误操作"
+
+msgid "Total Logs"
+msgstr "总日志数"
+
+msgid "Today's Logs"
+msgstr "今日日志"
+
+msgid "Language Settings"
+msgstr "语言设置"
+
+msgid "Choose your preferred language for the admin interface and frontend display."
+msgstr "选择您偏好的后台界面和前端显示语言。"
+
+msgid "Interface Language"
+msgstr "界面语言"
+
+msgid "Select the language for admin interface, frontend display, and email notifications."
+msgstr "选择后台界面、前端显示和邮件通知的语言。"
+
+msgid "Reset to Default"
+msgstr "恢复默认"
+
+msgid "System Information"
+msgstr "系统信息"
+
+msgid "Setting"
+msgstr "设置项"
+
+msgid "Value"
+msgstr "值"
+
+msgid "Plugin Version"
+msgstr "插件版本"
+
+msgid "WordPress Version"
+msgstr "WordPress版本"
+
+msgid "PHP Version"
+msgstr "PHP版本"
+
+msgid "MySQL Version"
+msgstr "MySQL版本"
+
+msgid "Max Upload Size"
+msgstr "最大上传大小"
+
+msgid "Max Execution Time"
+msgstr "最大执行时间"
+
+msgid "seconds"
+msgstr "秒"
+
+msgid "Memory Limit"
+msgstr "内存限制"
+
+msgid "Statistics"
+msgstr "统计信息"
+
+msgid "Total Videos"
+msgstr "视频总数"
+
+msgid "Total Categories"
+msgstr "分类总数"
+
+msgid "Total Downloads"
+msgstr "下载总数"
+
+msgid "Storage Used"
+msgstr "存储使用量"
+
+msgid "Maintenance Tools"
+msgstr "维护工具"
+
+msgid "Use these tools to maintain your video library."
+msgstr "使用这些工具来维护您的视频库。"
+
+msgid "Clean Temporary Files"
+msgstr "清理临时文件"
+
+msgid "Remove temporary upload files that may have been left behind."
+msgstr "删除可能遗留的临时上传文件。"
+
+msgid "Clean Now"
+msgstr "立即清理"
+
+msgid "Regenerate Video URLs"
+msgstr "重新生成视频URL"
+
+msgid "Update video file paths if you have moved your WordPress installation."
+msgstr "如果您移动了WordPress安装位置，请更新视频文件路径。"
+
+msgid "Regenerate"
+msgstr "重新生成"
+
+msgid "Export Settings"
+msgstr "导出设置"
+
+msgid "Export plugin settings and data for backup purposes."
+msgstr "导出插件设置和数据用于备份。"
+
+msgid "Export"
+msgstr "导出"
+
+msgid "Import Settings"
+msgstr "导入设置"
+
+msgid "Import previously exported settings and data."
+msgstr "导入之前导出的设置和数据。"
+
+msgid "Import"
+msgstr "导入"
+
+msgid "Help & Support"
+msgstr "帮助与支持"
+
+msgid "Language Switching"
+msgstr "语言切换"
+
+msgid "Changes take effect immediately after saving. Both admin interface and frontend will use the selected language."
+msgstr "保存后更改立即生效。后台界面和前端都将使用选定的语言。"
+
+msgid "Multilingual Content"
+msgstr "多语言内容"
+
+msgid "When creating categories and uploading videos, you can provide content in both languages for better user experience."
+msgstr "创建分类和上传视频时，您可以提供双语内容以获得更好的用户体验。"
+
+msgid "Backup Recommendations"
+msgstr "备份建议"
+
+msgid "Regularly export your settings and backup your video files to prevent data loss."
+msgstr "定期导出设置并备份视频文件以防止数据丢失。"
+
+msgid "Performance Tips"
+msgstr "性能提示"
+
+msgid "Clean temporary files regularly and optimize your server settings for better video upload performance."
+msgstr "定期清理临时文件并优化服务器设置以获得更好的视频上传性能。"
+
+msgid "Insufficient permissions"
+msgstr "权限不足"
+
+msgid "Invalid language"
+msgstr "无效的语言"
+
+msgid "Language switched successfully"
+msgstr "语言切换成功"
+
+msgid "Security verification failed"
+msgstr "安全验证失败"
+
+msgid "Network error, please try again"
+msgstr "网络错误，请重试"
+
+msgid "Are you sure you want to reset to default settings?"
+msgstr "确定要重置为默认设置吗？"
+
+msgid "Are you sure you want to clean temporary files?"
+msgstr "确定要清理临时文件吗？"
+
+msgid "Are you sure you want to regenerate video URLs?"
+msgstr "确定要重新生成视频URL吗？"
+
+msgid "Processing..."
+msgstr "处理中..."
+
+msgid "Operation failed"
+msgstr "操作失败"
+
+msgid "Dismiss this notice"
+msgstr "忽略此通知"
+
+msgid "Are you sure you want to delete this?"
+msgstr "确定要删除这个吗？"
+
+msgid "Today"
+msgstr "今天"
+
+msgid "Yesterday"
+msgstr "昨天"
+
+msgid "%d days ago"
+msgstr "%d 天前"
+
+msgid "bytes"
+msgstr "字节"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "Items"
+msgstr "项"
+
+msgid "of"
+msgstr "/"
+
+msgid "First"
+msgstr "首页"
+
+msgid "Previous"
+msgstr "上一页"
+
+msgid "Next"
+msgstr "下一页"
+
+msgid "Last"
+msgstr "末页"
+
+msgid "Current Page"
+msgstr "当前页"
+
+msgid "Search videos..."
+msgstr "搜索视频..."
+
+msgid "Search results"
+msgstr "搜索结果"
+
+msgid "No results found"
+msgstr "未找到结果"
+
+msgid "This field is required"
+msgstr "此字段为必填项"
+
+msgid "Please enter a valid value"
+msgstr "请输入有效值"
+
+msgid "File type not supported"
+msgstr "不支持的文件类型"
+
+msgid "File size too large"
+msgstr "文件大小超出限制"
+
+msgid "Usage Instructions"
+msgstr "使用说明"
+
+msgid "Batch Upload: You can select multiple video files for upload at once"
+msgstr "批量上传：可同时选择多个视频文件进行上传"
+
+msgid "Resumable Upload: Uploads will automatically retry if interrupted, preserving uploaded portions"
+msgstr "断点续传：网络中断时会自动重试，已上传的部分不会丢失"
+
+msgid "Queue Management: You can pause, resume, or clear the upload queue"
+msgstr "队列管理：可以暂停、继续或清空上传队列"
+
+msgid "Auto Categorization: Choose a category before uploading for easy management"
+msgstr "自动分类：上传前可选择分类，便于后续管理"
+
+msgid "Status Tracking: Real-time display of upload progress and status for each file"
+msgstr "状态跟踪：实时显示每个文件的上传进度和状态"
+
+msgid "Create Category"
+msgstr "创建分类"
+
+msgid "Fill in the category name and optional description, the system will automatically generate URL slug"
+msgstr "填写分类名称和可选的描述信息，系统会自动生成URL别名"
+
+msgid "Category Links"
+msgstr "分类链接"
+
+msgid "Each category has an independent frontend display link that can be copied and shared"
+msgstr "每个分类都有独立的前端展示链接，可以复制分享给其他人查看"
+
+msgid "Video Management"
+msgstr "视频管理"
+
+msgid "You can select categories when uploading videos, or modify categories in the video list"
+msgstr "上传视频时可以选择分类，也可以在视频列表中修改分类"
+
+msgid "Delete Category"
+msgstr "删除分类"
+
+msgid "When deleting a category, videos in that category will automatically be set to 'No Category' status"
+msgstr "删除分类时，该分类下的视频会自动归为"无分类"状态"
+
+msgid "Enter category name..."
+msgstr "输入分类名称..."
+
+msgid "Enter category description..."
+msgstr "输入分类描述..."
+
+msgid "Enter video title..."
+msgstr "输入视频标题..."
+
+msgid "Select category..."
+msgstr "选择分类..."
+
+msgid "Choose files..."
+msgstr "选择文件..."
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Confirm"
+msgstr "确认"
+
+msgid "Video Preview"
+msgstr "视频预览"
+
+msgid "Confirmation"
+msgstr "确认"
+
+msgid "Information"
+msgstr "信息"
+
+msgid "Please specify category parameter"
+msgstr "请指定分类参数"
+
+msgid "Assigned a video for you, please download and save it promptly"
+msgstr "为您分配了一个视频，请及时下载保存"
+
+msgid "Checking available videos..."
+msgstr "正在检查可用视频..."
+
+msgid "Load Failed"
+msgstr "加载失败"
+
+msgid "Reload"
+msgstr "重新加载"

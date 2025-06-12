@@ -1,0 +1,87 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+
+# 上传的视频文件
+/storage/app/public/videos/*
+!/storage/app/public/videos/.gitkeep
+
+# 视频缩略图
+/storage/app/public/thumbnails/*
+!/storage/app/public/thumbnails/.gitkeep
+
+# 临时文件目录
+/storage/app/temp/*
+!/storage/app/temp/.gitkeep
+
+# 日志文件
+/storage/logs/*
+!/storage/logs/.gitkeep
+
+# 框架缓存
+/bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
+
+# Laravel Mix
+/public/css
+/public/js
+/public/mix-manifest.json
+
+# 编译后的资源
+/public/build
+/public/dist
+
+# 本地开发文件
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+.php_cs.cache
+.php-cs-fixer.cache
+
+# IDE 和编辑器文件
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+
+# 测试覆盖率报告
+/coverage
+/coverage.xml
+/clover.xml
+
+# 数据库
+*.sqlite
+*.sqlite3
+
+# 备份文件
+*.bak
+*.backup
+*.old
+
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 
