@@ -1,0 +1,985 @@
+# English (US) language file for Video Manager
+# Copyright (C) 2024 Video Manager
+# This file is distributed under the same license as the Video Manager package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Video Manager 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+"X-Domain: video-manager\n"
+
+# ============================================================================
+# MAIN MENU AND PAGE TITLES
+# ============================================================================
+
+msgid "Video Manager"
+msgstr "Video Manager"
+
+msgid "Upload Videos"
+msgstr "Upload Videos"
+
+msgid "Video List"
+msgstr "Video List"
+
+msgid "Categories"
+msgstr "Categories"
+
+msgid "Upload Logs"
+msgstr "Upload Logs"
+
+msgid "Settings"
+msgstr "Settings"
+
+# ============================================================================
+# COMMON ACTIONS AND BUTTONS
+# ============================================================================
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Add New"
+msgstr "Add New"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Reset"
+msgstr "Reset"
+
+msgid "Refresh"
+msgstr "Refresh"
+
+msgid "Loading..."
+msgstr "Loading..."
+
+msgid "Success"
+msgstr "Success"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Warning"
+msgstr "Warning"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Confirm"
+msgstr "Confirm"
+
+msgid "Apply"
+msgstr "Apply"
+
+msgid "Export"
+msgstr "Export"
+
+msgid "Import"
+msgstr "Import"
+
+# ============================================================================
+# VIDEO UPLOAD PAGE
+# ============================================================================
+
+msgid "Video Batch Upload"
+msgstr "Video Batch Upload"
+
+msgid "Select Video Files"
+msgstr "Select Video Files"
+
+msgid "Supports MP4, AVI, MOV, WMV and other formats, supports resumable upload and queue upload"
+msgstr "Supports MP4, AVI, MOV, WMV and other formats, supports resumable upload and queue upload"
+
+msgid "Select Files"
+msgstr "Select Files"
+
+msgid "Drag and drop video files here or click to select files"
+msgstr "Drag and drop video files here or click to select files"
+
+msgid "Supports multiple file upload, maximum file size per file: %s"
+msgstr "Supports multiple file upload, maximum file size per file: %s"
+
+msgid "Start Upload"
+msgstr "Start Upload"
+
+msgid "Pause Upload"
+msgstr "Pause Upload"
+
+msgid "Clear Queue"
+msgstr "Clear Queue"
+
+msgid "Upload Queue"
+msgstr "Upload Queue"
+
+msgid "Queue Management"
+msgstr "Queue Management"
+
+msgid "Total Files"
+msgstr "Total Files"
+
+msgid "Completed"
+msgstr "Completed"
+
+msgid "Uploading"
+msgstr "Uploading"
+
+msgid "Failed"
+msgstr "Failed"
+
+msgid "Overall Progress"
+msgstr "Overall Progress"
+
+msgid "File uploaded successfully"
+msgstr "File uploaded successfully"
+
+msgid "Chunk uploaded successfully"
+msgstr "Chunk uploaded successfully"
+
+msgid "File upload failed"
+msgstr "File upload failed"
+
+msgid "Upload successful"
+msgstr "Upload successful"
+
+msgid "Upload failed"
+msgstr "Upload failed"
+
+msgid "No files to upload"
+msgstr "No files to upload"
+
+msgid "Uploading..."
+msgstr "Uploading..."
+
+msgid "Paused"
+msgstr "Paused"
+
+msgid "Waiting"
+msgstr "Waiting"
+
+msgid "Choose Category:"
+msgstr "Choose Category:"
+
+msgid "Refresh Categories"
+msgstr "Refresh Categories"
+
+# ============================================================================
+# VIDEO LIST MANAGEMENT
+# ============================================================================
+
+msgid "Video List Management"
+msgstr "Video List Management"
+
+msgid "Video Title"
+msgstr "Video Title"
+
+msgid "File Name"
+msgstr "File Name"
+
+msgid "File Size"
+msgstr "File Size"
+
+msgid "Category"
+msgstr "Category"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Upload Time"
+msgstr "Upload Time"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+msgid "Preview"
+msgstr "Preview"
+
+msgid "Download"
+msgstr "Download"
+
+msgid "Used"
+msgstr "Used"
+
+msgid "Unused"
+msgstr "Unused"
+
+msgid "All Status"
+msgstr "All Status"
+
+msgid "All Categories"
+msgstr "All Categories"
+
+msgid "No Category"
+msgstr "No Category"
+
+msgid "Bulk Actions"
+msgstr "Bulk Actions"
+
+msgid "Mark as Used"
+msgstr "Mark as Used"
+
+msgid "Mark as Unused"
+msgstr "Mark as Unused"
+
+msgid "Video deleted successfully"
+msgstr "Video deleted successfully"
+
+msgid "Video deletion failed"
+msgstr "Video deletion failed"
+
+msgid "Video does not exist"
+msgstr "Video does not exist"
+
+msgid "Status updated successfully"
+msgstr "Status updated successfully"
+
+msgid "Status update failed"
+msgstr "Status update failed"
+
+msgid "Search videos..."
+msgstr "Search videos..."
+
+msgid "No videos found"
+msgstr "No videos found"
+
+msgid "Video Preview"
+msgstr "Video Preview"
+
+msgid "Download Video"
+msgstr "Download Video"
+
+# ============================================================================
+# CATEGORY MANAGEMENT
+# ============================================================================
+
+msgid "Category Management"
+msgstr "Category Management"
+
+msgid "Add New Category"
+msgstr "Add New Category"
+
+msgid "Category Name"
+msgstr "Category Name"
+
+msgid "Category Name (English)"
+msgstr "Category Name (English)"
+
+msgid "Category Slug"
+msgstr "Category Slug"
+
+msgid "Category Description"
+msgstr "Category Description"
+
+msgid "Category Description (English)"
+msgstr "Category Description (English)"
+
+msgid "Add Category"
+msgstr "Add Category"
+
+msgid "Edit Category"
+msgstr "Edit Category"
+
+msgid "Delete Category"
+msgstr "Delete Category"
+
+msgid "Category List"
+msgstr "Category List"
+
+msgid "Category created successfully"
+msgstr "Category created successfully"
+
+msgid "Category creation failed, slug may already exist"
+msgstr "Category creation failed, slug may already exist"
+
+msgid "Category updated successfully"
+msgstr "Category updated successfully"
+
+msgid "Category update failed"
+msgstr "Category update failed"
+
+msgid "Category deleted successfully"
+msgstr "Category deleted successfully"
+
+msgid "Category deletion failed"
+msgstr "Category deletion failed"
+
+msgid "Category does not exist"
+msgstr "Category does not exist"
+
+msgid "Please enter category name"
+msgstr "Please enter category name"
+
+msgid "Are you sure you want to delete this category?"
+msgstr "Are you sure you want to delete this category?"
+
+msgid "Deleting this category will move all videos in it to 'No Category' status. This action cannot be undone."
+msgstr "Deleting this category will move all videos in it to 'No Category' status. This action cannot be undone."
+
+msgid "Confirm Delete"
+msgstr "Confirm Delete"
+
+msgid "Display name for the category"
+msgstr "Display name for the category"
+
+msgid "English display name for the category (optional)"
+msgstr "English display name for the category (optional)"
+
+msgid "URL slug for the category, auto-generated if empty"
+msgstr "URL slug for the category, auto-generated if empty"
+
+msgid "Optional category description"
+msgstr "Optional category description"
+
+msgid "Optional English category description"
+msgstr "Optional English category description"
+
+msgid "Auto-generated from name"
+msgstr "Auto-generated from name"
+
+msgid "Enter category name..."
+msgstr "Enter category name..."
+
+msgid "Enter English category name..."
+msgstr "Enter English category name..."
+
+msgid "Enter category description..."
+msgstr "Enter category description..."
+
+msgid "Enter English category description..."
+msgstr "Enter English category description..."
+
+msgid "Loading categories..."
+msgstr "Loading categories..."
+
+msgid "View Page"
+msgstr "View Page"
+
+msgid "videos"
+msgstr "videos"
+
+# ============================================================================
+# FRONTEND DISPLAY
+# ============================================================================
+
+msgid "Video Category"
+msgstr "Video Category"
+
+msgid "No video available"
+msgstr "No video available"
+
+msgid "No video available at the moment, please try again later"
+msgstr "No video available at the moment, please try again later"
+
+msgid "Download Confirmation"
+msgstr "Download Confirmation"
+
+msgid "Download Warning"
+msgstr "Download Warning"
+
+msgid "This video will no longer be displayed after download. Each user can only download once per category."
+msgstr "This video will no longer be displayed after download. Each user can only download once per category."
+
+msgid "Are you sure you want to download this video?"
+msgstr "Are you sure you want to download this video?"
+
+msgid "Confirm Download"
+msgstr "Confirm Download"
+
+msgid "Copy Link"
+msgstr "Copy Link"
+
+msgid "Link copied to clipboard"
+msgstr "Link copied to clipboard"
+
+msgid "Download successful! Video saved."
+msgstr "Download successful! Video saved."
+
+msgid "Download complete"
+msgstr "Download complete"
+
+msgid "You have already downloaded the video from this category. Thank you for using our service!"
+msgstr "You have already downloaded the video from this category. Thank you for using our service!"
+
+msgid "Download recorded successfully"
+msgstr "Download recorded successfully"
+
+msgid "Failed to record download"
+msgstr "Failed to record download"
+
+msgid "Assigned a video for you, please download and save it promptly"
+msgstr "Assigned a video for you, please download and save it promptly"
+
+msgid "Checking available videos..."
+msgstr "Checking available videos..."
+
+msgid "Important Reminder:"
+msgstr "Important Reminder:"
+
+msgid "This video will no longer be displayed after download"
+msgstr "This video will no longer be displayed after download"
+
+msgid "Each user can only download once per category"
+msgstr "Each user can only download once per category"
+
+msgid "Please confirm you want to download video:"
+msgstr "Please confirm you want to download video:"
+
+msgid "Click below buttons to preview or download"
+msgstr "Click below buttons to preview or download"
+
+# ============================================================================
+# UPLOAD LOGS
+# ============================================================================
+
+msgid "Upload Logs"
+msgstr "Upload Logs"
+
+msgid "Action Type"
+msgstr "Action Type"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Time"
+msgstr "Time"
+
+msgid "All Actions"
+msgstr "All Actions"
+
+msgid "Export Logs"
+msgstr "Export Logs"
+
+msgid "Clear Logs"
+msgstr "Clear Logs"
+
+msgid "Log Details"
+msgstr "Log Details"
+
+msgid "Successful Operations"
+msgstr "Successful Operations"
+
+msgid "Error Operations"
+msgstr "Error Operations"
+
+msgid "Total Logs"
+msgstr "Total Logs"
+
+msgid "Today's Logs"
+msgstr "Today's Logs"
+
+msgid "Loading logs..."
+msgstr "Loading logs..."
+
+msgid "No logs found"
+msgstr "No logs found"
+
+msgid "upload"
+msgstr "upload"
+
+msgid "delete"
+msgstr "delete"
+
+msgid "update"
+msgstr "update"
+
+msgid "access"
+msgstr "access"
+
+# ============================================================================
+# SETTINGS PAGE
+# ============================================================================
+
+msgid "Language Settings"
+msgstr "Language Settings"
+
+msgid "Choose your preferred language for the admin interface and frontend display."
+msgstr "Choose your preferred language for the admin interface and frontend display."
+
+msgid "Interface Language"
+msgstr "Interface Language"
+
+msgid "Select the language for admin interface, frontend display, and email notifications."
+msgstr "Select the language for admin interface, frontend display, and email notifications."
+
+msgid "Reset to Default"
+msgstr "Reset to Default"
+
+msgid "System Information"
+msgstr "System Information"
+
+msgid "Setting"
+msgstr "Setting"
+
+msgid "Value"
+msgstr "Value"
+
+msgid "Plugin Version"
+msgstr "Plugin Version"
+
+msgid "WordPress Version"
+msgstr "WordPress Version"
+
+msgid "PHP Version"
+msgstr "PHP Version"
+
+msgid "MySQL Version"
+msgstr "MySQL Version"
+
+msgid "Max Upload Size"
+msgstr "Max Upload Size"
+
+msgid "Max Execution Time"
+msgstr "Max Execution Time"
+
+msgid "seconds"
+msgstr "seconds"
+
+msgid "Memory Limit"
+msgstr "Memory Limit"
+
+msgid "Statistics"
+msgstr "Statistics"
+
+msgid "Total Videos"
+msgstr "Total Videos"
+
+msgid "Total Categories"
+msgstr "Total Categories"
+
+msgid "Total Downloads"
+msgstr "Total Downloads"
+
+msgid "Storage Used"
+msgstr "Storage Used"
+
+msgid "Maintenance Tools"
+msgstr "Maintenance Tools"
+
+msgid "Use these tools to maintain your video library."
+msgstr "Use these tools to maintain your video library."
+
+msgid "Clean Temporary Files"
+msgstr "Clean Temporary Files"
+
+msgid "Remove temporary upload files that may have been left behind."
+msgstr "Remove temporary upload files that may have been left behind."
+
+msgid "Clean Now"
+msgstr "Clean Now"
+
+msgid "Regenerate Video URLs"
+msgstr "Regenerate Video URLs"
+
+msgid "Update video file paths if you have moved your WordPress installation."
+msgstr "Update video file paths if you have moved your WordPress installation."
+
+msgid "Regenerate"
+msgstr "Regenerate"
+
+msgid "Export Settings"
+msgstr "Export Settings"
+
+msgid "Export plugin settings and data for backup purposes."
+msgstr "Export plugin settings and data for backup purposes."
+
+msgid "Import Settings"
+msgstr "Import Settings"
+
+msgid "Import previously exported settings and data."
+msgstr "Import previously exported settings and data."
+
+msgid "Help & Support"
+msgstr "Help & Support"
+
+msgid "Language Switching"
+msgstr "Language Switching"
+
+msgid "Changes take effect immediately after saving. Both admin interface and frontend will use the selected language."
+msgstr "Changes take effect immediately after saving. Both admin interface and frontend will use the selected language."
+
+msgid "Multilingual Content"
+msgstr "Multilingual Content"
+
+msgid "When creating categories and uploading videos, you can provide content in both languages for better user experience."
+msgstr "When creating categories and uploading videos, you can provide content in both languages for better user experience."
+
+msgid "Backup Recommendations"
+msgstr "Backup Recommendations"
+
+msgid "Regularly export your settings and backup your video files to prevent data loss."
+msgstr "Regularly export your settings and backup your video files to prevent data loss."
+
+msgid "Performance Tips"
+msgstr "Performance Tips"
+
+msgid "Clean temporary files regularly and optimize your server settings for better video upload performance."
+msgstr "Clean temporary files regularly and optimize your server settings for better video upload performance."
+
+# ============================================================================
+# ERROR AND SECURITY MESSAGES
+# ============================================================================
+
+msgid "Insufficient permissions"
+msgstr "Insufficient permissions"
+
+msgid "Invalid language"
+msgstr "Invalid language"
+
+msgid "Language switched successfully"
+msgstr "Language switched successfully"
+
+msgid "Security verification failed"
+msgstr "Security verification failed"
+
+msgid "Network error, please try again"
+msgstr "Network error, please try again"
+
+msgid "Are you sure you want to reset to default settings?"
+msgstr "Are you sure you want to reset to default settings?"
+
+msgid "Are you sure you want to clean temporary files?"
+msgstr "Are you sure you want to clean temporary files?"
+
+msgid "Are you sure you want to regenerate video URLs?"
+msgstr "Are you sure you want to regenerate video URLs?"
+
+msgid "Processing..."
+msgstr "Processing..."
+
+msgid "Operation failed"
+msgstr "Operation failed"
+
+msgid "Dismiss this notice"
+msgstr "Dismiss this notice"
+
+msgid "Are you sure you want to delete this?"
+msgstr "Are you sure you want to delete this?"
+
+msgid "Authentication failed, please refresh and try again"
+msgstr "Authentication failed, please refresh and try again"
+
+msgid "Invalid response format from server"
+msgstr "Invalid response format from server"
+
+msgid "Network connection failed, please check your network"
+msgstr "Network connection failed, please check your network"
+
+msgid "Permission denied, please log in again"
+msgstr "Permission denied, please log in again"
+
+msgid "AJAX endpoint does not exist"
+msgstr "AJAX endpoint does not exist"
+
+msgid "Internal server error"
+msgstr "Internal server error"
+
+msgid "WordPress security verification failed, please refresh page"
+msgstr "WordPress security verification failed, please refresh page"
+
+# ============================================================================
+# DATE AND TIME
+# ============================================================================
+
+msgid "Today"
+msgstr "Today"
+
+msgid "Yesterday"
+msgstr "Yesterday"
+
+msgid "%d days ago"
+msgstr "%d days ago"
+
+# ============================================================================
+# FILE OPERATIONS
+# ============================================================================
+
+msgid "bytes"
+msgstr "bytes"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "File Format"
+msgstr "File Format"
+
+msgid "File Size"
+msgstr "File Size"
+
+msgid "Upload Time"
+msgstr "Upload Time"
+
+# ============================================================================
+# PAGINATION
+# ============================================================================
+
+msgid "Items"
+msgstr "Items"
+
+msgid "of"
+msgstr "of"
+
+msgid "First"
+msgstr "First"
+
+msgid "Previous"
+msgstr "Previous"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Last"
+msgstr "Last"
+
+msgid "Current Page"
+msgstr "Current Page"
+
+msgid "Total %d items"
+msgstr "Total %d items"
+
+# ============================================================================
+# SEARCH AND FILTER
+# ============================================================================
+
+msgid "Search results"
+msgstr "Search results"
+
+msgid "No results found"
+msgstr "No results found"
+
+msgid "Filter by status"
+msgstr "Filter by status"
+
+msgid "Filter by category"
+msgstr "Filter by category"
+
+msgid "Date range"
+msgstr "Date range"
+
+msgid "From"
+msgstr "From"
+
+msgid "To"
+msgstr "To"
+
+# ============================================================================
+# FORM VALIDATION
+# ============================================================================
+
+msgid "This field is required"
+msgstr "This field is required"
+
+msgid "Please enter a valid value"
+msgstr "Please enter a valid value"
+
+msgid "File type not supported"
+msgstr "File type not supported"
+
+msgid "File size too large"
+msgstr "File size too large"
+
+msgid "Please select at least one item"
+msgstr "Please select at least one item"
+
+# ============================================================================
+# HELP TEXT AND INSTRUCTIONS
+# ============================================================================
+
+msgid "Usage Instructions"
+msgstr "Usage Instructions"
+
+msgid "Batch Upload: You can select multiple video files for upload at once"
+msgstr "Batch Upload: You can select multiple video files for upload at once"
+
+msgid "Resumable Upload: Uploads will automatically retry if interrupted, preserving uploaded portions"
+msgstr "Resumable Upload: Uploads will automatically retry if interrupted, preserving uploaded portions"
+
+msgid "Queue Management: You can pause, resume, or clear the upload queue"
+msgstr "Queue Management: You can pause, resume, or clear the upload queue"
+
+msgid "Auto Categorization: Choose a category before uploading for easy management"
+msgstr "Auto Categorization: Choose a category before uploading for easy management"
+
+msgid "Status Tracking: Real-time display of upload progress and status for each file"
+msgstr "Status Tracking: Real-time display of upload progress and status for each file"
+
+msgid "Create Category"
+msgstr "Create Category"
+
+msgid "Fill in the category name and optional description, the system will automatically generate URL slug"
+msgstr "Fill in the category name and optional description, the system will automatically generate URL slug"
+
+msgid "Category Links"
+msgstr "Category Links"
+
+msgid "Each category has an independent frontend display link that can be copied and shared"
+msgstr "Each category has an independent frontend display link that can be copied and shared"
+
+msgid "Video Management"
+msgstr "Video Management"
+
+msgid "You can select categories when uploading videos, or modify categories in the video list"
+msgstr "You can select categories when uploading videos, or modify categories in the video list"
+
+msgid "Delete Category"
+msgstr "Delete Category"
+
+msgid "When deleting a category, videos in that category will automatically be set to 'No Category' status"
+msgstr "When deleting a category, videos in that category will automatically be set to 'No Category' status"
+
+# ============================================================================
+# PLACEHOLDERS AND HINTS
+# ============================================================================
+
+msgid "Enter video title..."
+msgstr "Enter video title..."
+
+msgid "Enter English video title..."
+msgstr "Enter English video title..."
+
+msgid "Select category..."
+msgstr "Select category..."
+
+msgid "Choose files..."
+msgstr "Choose files..."
+
+msgid "Search by title or filename..."
+msgstr "Search by title or filename..."
+
+# ============================================================================
+# MODAL DIALOGS
+# ============================================================================
+
+msgid "Confirmation"
+msgstr "Confirmation"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Video Preview"
+msgstr "Video Preview"
+
+msgid "Video Information"
+msgstr "Video Information"
+
+msgid "File Information"
+msgstr "File Information"
+
+# ============================================================================
+# STATUS AND STATE MESSAGES
+# ============================================================================
+
+msgid "Assigning video for you..."
+msgstr "Assigning video for you..."
+
+msgid "No video available at the moment"
+msgstr "No video available at the moment"
+
+msgid "Load Failed"
+msgstr "Load Failed"
+
+msgid "Reload"
+msgstr "Reload"
+
+msgid "Video data unavailable"
+msgstr "Video data unavailable"
+
+msgid "Download record failed, but file downloaded"
+msgstr "Download record failed, but file downloaded"
+
+msgid "Network connection restored"
+msgstr "Network connection restored"
+
+msgid "Network connection lost"
+msgstr "Network connection lost"
+
+# ============================================================================
+# SHORTCODE MESSAGES
+# ============================================================================
+
+msgid "Please specify category parameter"
+msgstr "Please specify category parameter"
+
+msgid "Category parameter missing"
+msgstr "Category parameter missing"
+
+# ============================================================================
+# AJAX AND API MESSAGES
+# ============================================================================
+
+msgid "Successfully uploaded video: %s"
+msgstr "Successfully uploaded video: %s"
+
+msgid "Video upload failed"
+msgstr "Video upload failed"
+
+msgid "Deleted video: %s"
+msgstr "Deleted video: %s"
+
+msgid "IP %s accessed category %s, assigned video: %s"
+msgstr "IP %s accessed category %s, assigned video: %s"
+
+# ============================================================================
+# LOG MESSAGES
+# ============================================================================
+
+msgid "Log message details"
+msgstr "Log message details"
+
+msgid "Detailed Message:"
+msgstr "Detailed Message:"
+
+msgid "Log Status:"
+msgstr "Log Status:"
+
+msgid "Action Type:"
+msgstr "Action Type:"
+
+msgid "Time:"
+msgstr "Time:"
+
+# ============================================================================
+# ADDITIONAL FRONTEND MESSAGES
+# ============================================================================
+
+msgid "Video assigned for you"
+msgstr "Video assigned for you"
+
+msgid "Please download and save promptly"
+msgstr "Please download and save promptly"
+
+msgid "Thank you for using our service!"
+msgstr "Thank you for using our service!"
+
+msgid "Already downloaded from this category"
+msgstr "Already downloaded from this category"

@@ -1,0 +1,7 @@
+{
+    "site_name": "BANONO",
+    "admin_email": "admin@example.com",
+    "max_file_size": "1000",
+    "allowed_file_types": "mp4,mov,avi",
+    "language": "zh"
+}
