@@ -136,13 +136,7 @@
                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
                                 <div class="flex items-center">
-                                    <div class="h-10 w-10 flex-shrink-0">
-                                        <img class="h-10 w-10 rounded object-cover" src="{{ $download->video->thumbnail_url }}" alt="">
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="font-medium text-gray-900 dark:text-white">{{ $download->video->title }}</div>
-                                        <div class="text-gray-500 dark:text-gray-400">{{ $download->video->duration }}</div>
-                                    </div>
+                                    <div class="font-medium text-gray-900 dark:text-white">{{ $download->video->title }}</div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
