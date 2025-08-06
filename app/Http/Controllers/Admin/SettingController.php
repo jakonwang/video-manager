@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
-    protected $settingsFile = 'settings.json';
-
     /**
      * 显示设置页面
      */
     public function index()
     {
-        $settings = $this->getSettings();
+        $settings = Setting::getAll();
         return view('admin.settings', compact('settings'));
     }
 
@@ -40,35 +39,32 @@ class SettingController extends Controller
             'use_cos' => 'nullable|boolean',
         ]);
 
-        $settings = $this->getSettings();
+        // 保存基本设置
+        Setting::set('site_name', $request->site_name, 'string', 'general', '网站名称');
+        Setting::set('admin_email', $request->admin_email, 'string', 'general', '管理员邮箱');
+        Setting::set('max_file_size', $request->max_file_size, 'integer', 'file', '最大文件大小(MB)');
+        Setting::set('allowed_file_types', $request->allowed_file_types, 'string', 'file', '允许的文件类型');
+        Setting::set('language', $request->language, 'string', 'system', '系统语言');
 
-        // 更新基本设置
-        $settings = array_merge($settings, $request->only([
-            'site_name',
-            'admin_email',
-            'max_file_size',
-            'allowed_file_types',
-            'language',
-        ]));
-
-        // 更新腾讯云 COS 设置
-        $cosSettings = [
-            'use_cos' => $request->boolean('use_cos'),
-            'cos_secret_id' => $request->cos_secret_id,
-            'cos_secret_key' => $request->cos_secret_key,
-            'cos_region' => $request->cos_region,
-            'cos_bucket' => $request->cos_bucket,
-            'cos_domain' => $request->cos_domain,
-            'cos_timeout' => $request->cos_timeout ?? 60,
-        ];
-
-        $settings = array_merge($settings, $cosSettings);
-
-        // 保存设置
-        Storage::put($this->settingsFile, json_encode($settings, JSON_PRETTY_PRINT));
+        // 保存腾讯云 COS 设置
+        Setting::set('use_cos', $request->boolean('use_cos'), 'boolean', 'cos', '是否启用腾讯云 COS');
+        Setting::set('cos_secret_id', $request->cos_secret_id, 'string', 'cos', '腾讯云 Secret ID');
+        Setting::set('cos_secret_key', $request->cos_secret_key, 'string', 'cos', '腾讯云 Secret Key');
+        Setting::set('cos_region', $request->cos_region, 'string', 'cos', '腾讯云 COS 地域');
+        Setting::set('cos_bucket', $request->cos_bucket, 'string', 'cos', '腾讯云 COS 存储桶');
+        Setting::set('cos_domain', $request->cos_domain, 'string', 'cos', '腾讯云 COS 自定义域名');
+        Setting::set('cos_timeout', $request->cos_timeout ?? 60, 'integer', 'cos', '腾讯云 COS 超时时间');
 
         // 如果启用了 COS，更新环境变量
         if ($request->boolean('use_cos') && $request->cos_secret_id && $request->cos_secret_key) {
+            $cosSettings = [
+                'cos_secret_id' => $request->cos_secret_id,
+                'cos_secret_key' => $request->cos_secret_key,
+                'cos_region' => $request->cos_region,
+                'cos_bucket' => $request->cos_bucket,
+                'cos_domain' => $request->cos_domain,
+                'cos_timeout' => $request->cos_timeout ?? 60,
+            ];
             $this->updateEnvironmentVariables($cosSettings);
         }
 
@@ -270,29 +266,5 @@ class SettingController extends Controller
         }
     }
 
-    /**
-     * 获取设置
-     */
-    protected function getSettings()
-    {
-        if (Storage::exists($this->settingsFile)) {
-            return json_decode(Storage::get($this->settingsFile), true) ?? [];
-        }
 
-        // 默认设置
-        return [
-            'site_name' => '视频管理系统',
-            'admin_email' => 'admin@example.com',
-            'max_file_size' => 100,
-            'allowed_file_types' => 'mp4,mov,avi',
-            'language' => 'zh',
-            'use_cos' => false,
-            'cos_secret_id' => '',
-            'cos_secret_key' => '',
-            'cos_region' => 'ap-beijing',
-            'cos_bucket' => '',
-            'cos_domain' => '',
-            'cos_timeout' => 60,
-        ];
-    }
 }

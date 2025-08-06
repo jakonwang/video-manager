@@ -3,6 +3,21 @@
 
 @section('content')
 <div class="space-y-6 animate-fade-in">
+    <!-- 成功消息 -->
+    @if(session('success'))
+        <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg flex items-center space-x-2 animate-fade-in">
+            <i class="fas fa-check-circle text-green-600"></i>
+            <span>{{ session('success') }}</span>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg flex items-center space-x-2 animate-fade-in">
+            <i class="fas fa-exclamation-circle text-red-600"></i>
+            <span>{{ session('error') }}</span>
+        </div>
+    @endif
+
     <!-- 页面头部 -->
     <div class="flex items-center space-x-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-md">
