@@ -80,21 +80,19 @@ class VideoViewController extends Controller
                 return view('mobile.no-video', ['category' => $category]);
             }
 
-            // 检查视频文件是否存在
-            $videoPath = public_path($video->path);
-            Log::info('Checking video file:', [
+            // 检查视频文件是否存在（使用腾讯云 COS）
+            $cosAdapter = app(\App\Services\CosAdapter::class);
+            Log::info('Checking video file in COS:', [
                 'video_id' => $video->id,
                 'path' => $video->path,
-                'full_path' => $videoPath,
-                'exists' => file_exists($videoPath),
-                'size' => file_exists($videoPath) ? filesize($videoPath) : 0
+                'exists' => $cosAdapter->exists($video->path),
+                'size' => $cosAdapter->exists($video->path) ? $cosAdapter->size($video->path) : 0
             ]);
 
-            if (!file_exists($videoPath)) {
-                Log::error('Video file not found:', [
+            if (!$cosAdapter->exists($video->path)) {
+                Log::error('Video file not found in COS:', [
                     'video_id' => $video->id,
-                    'path' => $video->path,
-                    'full_path' => $videoPath
+                    'path' => $video->path
                 ]);
 
                 if ($request->expectsJson()) {
@@ -173,19 +171,18 @@ class VideoViewController extends Controller
             abort(404, '视频尚未处理完成');
         }
         
-        // 使用 public 目录下的 videos 文件夹
-        $filePath = public_path($video->path);
+        // 使用腾讯云 COS 存储
+        $cosAdapter = app(\App\Services\CosAdapter::class);
         
-        if (!file_exists($filePath)) {
-            Log::error('Video file not found:', [
+        if (!$cosAdapter->exists($video->path)) {
+            Log::error('Video file not found in COS:', [
                 'video_id' => $videoId,
-                'path' => $video->path,
-                'full_path' => $filePath
+                'path' => $video->path
             ]);
             abort(404, '视频文件不存在');
         }
         
-        $fileSize = filesize($filePath);
+        $fileSize = $cosAdapter->size($video->path);
         $mimeType = $video->mime_type ?: 'video/mp4';
         
         Log::info('Sending video file:', [
@@ -221,24 +218,28 @@ class VideoViewController extends Controller
                 'content_length' => $end - $start + 1
             ]);
             
-            return response()->stream(function() use ($filePath, $start, $end) {
-                $file = fopen($filePath, 'rb');
-                fseek($file, $start);
-                
-                $remaining = $end - $start + 1;
-                while ($remaining > 0 && !feof($file)) {
-                    $chunk = fread($file, min(8192, $remaining));
-                    echo $chunk;
-                    $remaining -= strlen($chunk);
-                    flush();
+            return response()->stream(function() use ($cosAdapter, $video, $start, $end) {
+                // 从 COS 获取文件内容
+                $fileContents = $cosAdapter->get($video->path);
+                if ($fileContents === false) {
+                    abort(500, '无法获取视频文件');
                 }
                 
-                fclose($file);
+                // 输出指定范围的内容
+                echo substr($fileContents, $start, $end - $start + 1);
+                flush();
             }, 206, $headers);
         }
         
-        return response()->stream(function() use ($filePath) {
-            readfile($filePath);
+        return response()->stream(function() use ($cosAdapter, $video) {
+            // 从 COS 获取文件内容
+            $fileContents = $cosAdapter->get($video->path);
+            if ($fileContents === false) {
+                abort(500, '无法获取视频文件');
+            }
+            
+            echo $fileContents;
+            flush();
         }, 200, $headers);
     }
     
@@ -276,8 +277,9 @@ class VideoViewController extends Controller
             ]);
         }
 
-        // 检查视频文件是否存在
-        if (!file_exists(public_path($video->path))) {
+        // 检查视频文件是否存在（使用腾讯云 COS）
+        $cosAdapter = app(\App\Services\CosAdapter::class);
+        if (!$cosAdapter->exists($video->path)) {
             return response()->json([
                 'success' => false,
                 'message' => __('mobile.video.file_not_found')
@@ -321,9 +323,9 @@ class VideoViewController extends Controller
             ]);
         }
 
-        // 检查视频文件是否存在
-        $filePath = public_path($video->path);
-        if (!file_exists($filePath)) {
+        // 检查视频文件是否存在（使用腾讯云 COS）
+        $cosAdapter = app(\App\Services\CosAdapter::class);
+        if (!$cosAdapter->exists($video->path)) {
             return response()->json([
                 'success' => false,
                 'message' => __('mobile.video.file_not_found')
@@ -346,10 +348,23 @@ class VideoViewController extends Controller
             'downloaded_at' => now()
         ]);
 
+        // 获取文件内容并返回下载
+        $fileContents = $cosAdapter->get($video->path);
+        if ($fileContents === false) {
+            return response()->json([
+                'success' => false,
+                'message' => '无法获取视频文件'
+            ], 500);
+        }
+
         // 返回视频文件流
         $extension = pathinfo($video->path, PATHINFO_EXTENSION);
         $fileName = $video->title . '.' . $extension;
-        return response()->download($filePath, $fileName);
+        return response($fileContents, 200, [
+            'Content-Type' => $video->mime_type ?? 'video/mp4',
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+            'Content-Length' => strlen($fileContents)
+        ]);
     }
 
     /**
