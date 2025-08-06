@@ -78,18 +78,37 @@ class ProcessVideoUpload implements ShouldQueue
             $fileName = pathinfo($this->tempFilePath, PATHINFO_BASENAME);
             $targetPath = $targetDir . '/' . $fileName;
 
-            // 使用腾讯云 COS SDK 上传文件
-            $cosAdapter = app(\App\Services\CosAdapter::class);
+            // 检查是否启用 COS
+            $useCos = \App\Models\Setting::get('use_cos', false);
             
-            // 对于大文件，使用分片上传
-            if ($this->fileSize > 100 * 1024 * 1024) { // 大于100MB的文件
-                $uploadSuccess = $cosAdapter->putLargeFile($targetPath, $this->tempFilePath);
-            } else {
-                $uploadSuccess = $cosAdapter->put($targetPath, file_get_contents($this->tempFilePath));
-            }
+            if ($useCos) {
+                // 使用腾讯云 COS 上传文件
+                $cosAdapter = app('cos.adapter');
+                
+                if (!$cosAdapter) {
+                    throw new Exception('腾讯云 COS 配置不完整，无法上传文件');
+                }
+                
+                // 对于大文件，使用分片上传
+                if ($this->fileSize > 100 * 1024 * 1024) { // 大于100MB的文件
+                    $uploadSuccess = $cosAdapter->putLargeFile($targetPath, $this->tempFilePath);
+                } else {
+                    $uploadSuccess = $cosAdapter->put($targetPath, file_get_contents($this->tempFilePath));
+                }
 
-            if (!$uploadSuccess) {
-                throw new Exception('无法上传视频文件到腾讯云COS');
+                if (!$uploadSuccess) {
+                    throw new Exception('无法上传视频文件到腾讯云COS');
+                }
+            } else {
+                // 使用本地存储
+                $localPath = 'public/' . $targetPath;
+                $uploadSuccess = Storage::disk('local')->put($localPath, file_get_contents($this->tempFilePath));
+                
+                if (!$uploadSuccess) {
+                    throw new Exception('无法保存视频文件到本地存储');
+                }
+                
+                $targetPath = $localPath;
             }
 
             // 删除临时文件
@@ -110,7 +129,8 @@ class ProcessVideoUpload implements ShouldQueue
             Log::info('视频处理完成', [
                 'video_id' => $video->id,
                 'title' => $video->title,
-                'path' => $video->path
+                'path' => $video->path,
+                'storage' => $useCos ? 'COS' : 'Local'
             ]);
 
         } catch (Exception $e) {

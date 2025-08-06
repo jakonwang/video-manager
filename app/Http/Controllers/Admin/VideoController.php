@@ -273,30 +273,67 @@ class VideoController extends Controller
             ], 400);
         }
 
-        // 使用腾讯云 COS SDK 获取文件
-        $cosAdapter = app(\App\Services\CosAdapter::class);
+        // 检查是否启用 COS
+        $useCos = \App\Models\Setting::get('use_cos', false);
         
-        // 检查文件是否存在
-        if (!$cosAdapter->exists($video->path)) {
-            // 记录错误日志
-            \Illuminate\Support\Facades\Log::error('视频下载失败：文件不存在', [
-                'video_id' => $video->id,
-                'path' => $video->path
-            ]);
+        if ($useCos) {
+            // 使用腾讯云 COS 下载文件
+            $cosAdapter = app('cos.adapter');
             
-            return response()->json([
-                'success' => false,
-                'message' => '视频文件不存在'
-            ], 404);
-        }
+            if (!$cosAdapter) {
+                return response()->json([
+                    'success' => false,
+                    'message' => '腾讯云 COS 配置不完整，无法下载文件'
+                ], 500);
+            }
+            
+            // 检查文件是否存在
+            if (!$cosAdapter->exists($video->path)) {
+                // 记录错误日志
+                \Illuminate\Support\Facades\Log::error('视频下载失败：文件不存在', [
+                    'video_id' => $video->id,
+                    'path' => $video->path
+                ]);
+                
+                return response()->json([
+                    'success' => false,
+                    'message' => '视频文件不存在'
+                ], 404);
+            }
 
-        // 获取文件内容
-        $fileContents = $cosAdapter->get($video->path);
-        if ($fileContents === false) {
-            return response()->json([
-                'success' => false,
-                'message' => '无法获取视频文件'
-            ], 500);
+            // 获取文件内容
+            $fileContents = $cosAdapter->get($video->path);
+            if ($fileContents === false) {
+                return response()->json([
+                    'success' => false,
+                    'message' => '无法获取视频文件'
+                ], 500);
+            }
+        } else {
+            // 使用本地存储下载文件
+            $localPath = storage_path('app/public/' . $video->path);
+            
+            if (!file_exists($localPath)) {
+                // 记录错误日志
+                \Illuminate\Support\Facades\Log::error('视频下载失败：本地文件不存在', [
+                    'video_id' => $video->id,
+                    'path' => $localPath
+                ]);
+                
+                return response()->json([
+                    'success' => false,
+                    'message' => '视频文件不存在'
+                ], 404);
+            }
+
+            // 获取文件内容
+            $fileContents = file_get_contents($localPath);
+            if ($fileContents === false) {
+                return response()->json([
+                    'success' => false,
+                    'message' => '无法读取视频文件'
+                ], 500);
+            }
         }
 
         // 获取文件扩展名
@@ -307,7 +344,8 @@ class VideoController extends Controller
         \Illuminate\Support\Facades\Log::info('视频下载请求', [
             'video_id' => $video->id,
             'path' => $video->path,
-            'file_size' => strlen($fileContents)
+            'file_size' => strlen($fileContents),
+            'storage' => $useCos ? 'COS' : 'Local'
         ]);
         
         // 返回文件下载响应
@@ -320,11 +358,23 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
-        // 使用腾讯云 COS SDK 删除文件
-        $cosAdapter = app(\App\Services\CosAdapter::class);
-        if ($cosAdapter->exists($video->path)) {
-            $cosAdapter->delete($video->path);
+        // 检查是否启用 COS
+        $useCos = \App\Models\Setting::get('use_cos', false);
+        
+        if ($useCos) {
+            // 使用腾讯云 COS 删除文件
+            $cosAdapter = app('cos.adapter');
+            if ($cosAdapter && $cosAdapter->exists($video->path)) {
+                $cosAdapter->delete($video->path);
+            }
+        } else {
+            // 使用本地存储删除文件
+            $localPath = storage_path('app/public/' . $video->path);
+            if (file_exists($localPath)) {
+                unlink($localPath);
+            }
         }
+        
         $video->delete();
 
         return redirect()->route('admin.videos.index')

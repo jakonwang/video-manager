@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Models\VideoIpDownload;
 use Illuminate\Support\Facades\Log;
+use App\Models\Setting;
 
 class Video extends Model
 {
@@ -104,7 +105,48 @@ class Video extends Model
      */
     public function getUrlAttribute()
     {
-        return Storage::disk('public')->url($this->path);
+        try {
+            // 检查是否启用 COS
+            $useCos = Setting::get('use_cos', false);
+            
+            if ($useCos) {
+                try {
+                    // 尝试使用 COS 适配器
+                    $cosAdapter = app('cos.adapter');
+                    if ($cosAdapter) {
+                        return $cosAdapter->url($this->path);
+                    }
+                } catch (\Exception $e) {
+                    // 如果 COS 不可用，回退到本地存储
+                    Log::warning('COS 存储不可用，回退到本地存储', [
+                        'video_id' => $this->id,
+                        'error' => $e->getMessage()
+                    ]);
+                }
+            }
+            
+            // 使用本地存储
+            return Storage::disk('public')->url($this->path);
+            
+        } catch (\Exception $e) {
+            // 如果所有存储都失败，返回一个默认的 URL
+            Log::error('视频 URL 获取失败', [
+                'video_id' => $this->id,
+                'error' => $e->getMessage()
+            ]);
+            return asset('videos/default.mp4');
+        }
+    }
+
+    /**
+     * Get the video thumbnail URL.
+     *
+     * @return string
+     */
+    public function getThumbnailUrlAttribute()
+    {
+        // 返回一个默认的视频缩略图占位符
+        return 'https://via.placeholder.com/300x200/4F46E5/FFFFFF?text=Video';
     }
 
     /**
