@@ -273,17 +273,15 @@ class VideoController extends Controller
             ], 400);
         }
 
-        // 视频文件存储在 public/videos 目录下
-        $videoPath = $video->path;
-        $fullPath = public_path($videoPath);
+        // 使用腾讯云 COS SDK 获取文件
+        $cosAdapter = app(\App\Services\CosAdapter::class);
         
         // 检查文件是否存在
-        if (!file_exists($fullPath)) {
+        if (!$cosAdapter->exists($video->path)) {
             // 记录错误日志
             \Illuminate\Support\Facades\Log::error('视频下载失败：文件不存在', [
                 'video_id' => $video->id,
-                'path' => $videoPath,
-                'full_path' => $fullPath
+                'path' => $video->path
             ]);
             
             return response()->json([
@@ -292,31 +290,40 @@ class VideoController extends Controller
             ], 404);
         }
 
+        // 获取文件内容
+        $fileContents = $cosAdapter->get($video->path);
+        if ($fileContents === false) {
+            return response()->json([
+                'success' => false,
+                'message' => '无法获取视频文件'
+            ], 500);
+        }
+
         // 获取文件扩展名
-        $extension = pathinfo($videoPath, PATHINFO_EXTENSION);
+        $extension = pathinfo($video->path, PATHINFO_EXTENSION);
         $filename = $video->title . '.' . $extension;
         
         // 记录下载日志
         \Illuminate\Support\Facades\Log::info('视频下载请求', [
             'video_id' => $video->id,
-            'path' => $videoPath,
-            'full_path' => $fullPath,
-            'exists' => file_exists($fullPath),
-            'file_size' => filesize($fullPath)
+            'path' => $video->path,
+            'file_size' => strlen($fileContents)
         ]);
         
         // 返回文件下载响应
-        return response()->download(
-            $fullPath,
-            $filename,
-            ['Content-Type' => $video->mime_type ?? 'video/mp4']
-        );
+        return response($fileContents, 200, [
+            'Content-Type' => $video->mime_type ?? 'video/mp4',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+            'Content-Length' => strlen($fileContents)
+        ]);
     }
 
     public function destroy(Video $video)
     {
-        if (Storage::disk('public')->exists($video->path)) {
-            Storage::disk('public')->delete($video->path);
+        // 使用腾讯云 COS SDK 删除文件
+        $cosAdapter = app(\App\Services\CosAdapter::class);
+        if ($cosAdapter->exists($video->path)) {
+            $cosAdapter->delete($video->path);
         }
         $video->delete();
 

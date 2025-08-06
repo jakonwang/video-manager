@@ -76,4 +76,5 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     // 系统设置
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
+    Route::post('settings/test-cos', [SettingController::class, 'testCosConnection'])->name('settings.test-cos');
 });

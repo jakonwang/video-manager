@@ -73,25 +73,30 @@ class ProcessVideoUpload implements ShouldQueue
 
             // 确保目标目录存在
             $targetDir = 'videos/' . date('Y/m/d');
-            $uploadDir = public_path($targetDir);
-            if (!file_exists($uploadDir)) {
-                mkdir($uploadDir, 0755, true);
-            }
-
+            
             // 生成唯一文件名
             $fileName = pathinfo($this->tempFilePath, PATHINFO_BASENAME);
-            $targetPath = $uploadDir . '/' . $fileName;
+            $targetPath = $targetDir . '/' . $fileName;
 
-            // 移动文件到最终位置
-            if (!copy($this->tempFilePath, $targetPath)) {
-                throw new Exception('无法复制视频文件到目标位置');
+            // 使用腾讯云 COS SDK 上传文件
+            $cosAdapter = app(\App\Services\CosAdapter::class);
+            
+            // 对于大文件，使用分片上传
+            if ($this->fileSize > 100 * 1024 * 1024) { // 大于100MB的文件
+                $uploadSuccess = $cosAdapter->putLargeFile($targetPath, $this->tempFilePath);
+            } else {
+                $uploadSuccess = $cosAdapter->put($targetPath, file_get_contents($this->tempFilePath));
+            }
+
+            if (!$uploadSuccess) {
+                throw new Exception('无法上传视频文件到腾讯云COS');
             }
 
             // 删除临时文件
             @unlink($this->tempFilePath);
 
-            // 更新视频记录
-            $video->path = $targetDir . '/' . $fileName;
+            // 更新视频记录 - 保存相对路径，便于访问
+            $video->path = $targetPath;
             $video->size = $this->fileSize;
             $video->mime_type = $this->mimeType;
             
