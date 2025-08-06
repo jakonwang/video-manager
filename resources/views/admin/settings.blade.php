@@ -244,14 +244,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const testButton = document.getElementById('test-cos-connection');
     const testResult = document.getElementById('cos-test-result');
 
-    // 切换 COS 设置显示/隐藏
-    useCosCheckbox.addEventListener('change', function() {
-        if (this.checked) {
+    // 页面加载时检查 COS 设置状态
+    function updateCosSettingsVisibility() {
+        if (useCosCheckbox.checked) {
             cosSettings.classList.remove('hidden');
         } else {
             cosSettings.classList.add('hidden');
         }
-    });
+    }
+
+    // 初始化显示状态
+    updateCosSettingsVisibility();
+
+    // 切换 COS 设置显示/隐藏
+    useCosCheckbox.addEventListener('change', updateCosSettingsVisibility);
 
     // 测试 COS 连接
     testButton.addEventListener('click', function() {

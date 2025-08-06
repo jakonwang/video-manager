@@ -286,6 +286,13 @@ class SettingController extends Controller
             'max_file_size' => 100,
             'allowed_file_types' => 'mp4,mov,avi',
             'language' => 'zh',
+            'use_cos' => false,
+            'cos_secret_id' => '',
+            'cos_secret_key' => '',
+            'cos_region' => 'ap-beijing',
+            'cos_bucket' => '',
+            'cos_domain' => '',
+            'cos_timeout' => 60,
         ];
     }
 }
