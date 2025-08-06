@@ -84,4 +84,32 @@ _ide_helper_models.php
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db 
+Thumbs.db
+
+# Laravel 框架缓存和会话文件
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+!/storage/framework/cache/.gitkeep
+!/storage/framework/sessions/.gitkeep
+!/storage/framework/views/.gitkeep
+
+# 敏感配置文件
+.env
+.env.local
+.env.*.local
+
+# 测试文件
+test_cos_system.php
+test_cos_connection.php
+
+# Composer 可执行文件
+composer.phar
+
+# 腾讯云 COS 相关临时文件
+cos_*.log
+cos_*.tmp
+
+# 上传的临时文件
+*.tmp
+*.temp 

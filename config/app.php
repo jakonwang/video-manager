@@ -39,6 +39,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\CosServiceProvider::class,
     ],
     'aliases' => [
         'File' => Illuminate\Support\Facades\File::class,
