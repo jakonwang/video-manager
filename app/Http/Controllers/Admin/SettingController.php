@@ -55,18 +55,8 @@ class SettingController extends Controller
         Setting::set('cos_domain', $request->cos_domain, 'string', 'cos', '腾讯云 COS 自定义域名');
         Setting::set('cos_timeout', $request->cos_timeout ?? 60, 'integer', 'cos', '腾讯云 COS 超时时间');
 
-        // 如果启用了 COS，更新环境变量
-        if ($request->boolean('use_cos') && $request->cos_secret_id && $request->cos_secret_key) {
-            $cosSettings = [
-                'cos_secret_id' => $request->cos_secret_id,
-                'cos_secret_key' => $request->cos_secret_key,
-                'cos_region' => $request->cos_region,
-                'cos_bucket' => $request->cos_bucket,
-                'cos_domain' => $request->cos_domain,
-                'cos_timeout' => $request->cos_timeout ?? 60,
-            ];
-            $this->updateEnvironmentVariables($cosSettings);
-        }
+        // 清除设置缓存
+        \App\Models\Setting::clearCache();
 
         return redirect()->route('admin.settings')
             ->with('success', '设置已更新！');
@@ -208,51 +198,7 @@ class SettingController extends Controller
         }
     }
 
-    /**
-     * 更新环境变量
-     */
-    protected function updateEnvironmentVariables($cosSettings)
-    {
-        $envFile = base_path('.env');
-        
-        if (!file_exists($envFile)) {
-            return;
-        }
 
-        $envContent = file_get_contents($envFile);
-        
-        // 更新或添加 COS 配置
-        $envUpdates = [
-            'FILESYSTEM_DISK' => 'cos',
-            'COS_SECRET_ID' => $cosSettings['cos_secret_id'],
-            'COS_SECRET_KEY' => $cosSettings['cos_secret_key'],
-            'COS_REGION' => $cosSettings['cos_region'],
-            'COS_BUCKET' => $cosSettings['cos_bucket'],
-            'COS_DOMAIN' => $cosSettings['cos_domain'],
-            'COS_TIMEOUT' => $cosSettings['cos_timeout'],
-        ];
-
-        foreach ($envUpdates as $key => $value) {
-            if (empty($value)) continue;
-            
-            if (strpos($envContent, $key . '=') !== false) {
-                // 更新现有配置
-                $envContent = preg_replace(
-                    "/^{$key}=.*/m",
-                    "{$key}={$value}",
-                    $envContent
-                );
-            } else {
-                // 添加新配置
-                $envContent .= "\n{$key}={$value}";
-            }
-        }
-
-        file_put_contents($envFile, $envContent);
-        
-        // 清理配置缓存
-        \Illuminate\Support\Facades\Artisan::call('config:clear');
-    }
 
     /**
      * 临时设置环境变量
