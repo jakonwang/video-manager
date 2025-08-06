@@ -221,7 +221,7 @@
                     <span>{{ __('admin.user_management') }}</span>
                 </a>
 
-                <a href="{{ route('admin.settings.index') }}" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 {{ request()->routeIs('admin.settings.*') ? 'bg-indigo-500/10 text-indigo-400' : 'text-gray-300 hover:bg-gray-700/50 hover:text-white' }}">
+                <a href="{{ route('admin.settings') }}" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 {{ request()->routeIs('admin.settings.*') ? 'bg-indigo-500/10 text-indigo-400' : 'text-gray-300 hover:bg-gray-700/50 hover:text-white' }}">
                     <i class="fas fa-cog w-5 h-5 mr-3"></i>
                     <span>{{ __('admin.system_settings') }}</span>
                 </a>

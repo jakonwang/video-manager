@@ -26,7 +26,7 @@
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                         {{ __('admin.users') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.*')">
+                    <x-nav-link :href="route('admin.settings')" :active="request()->routeIs('admin.settings.*')">
                         {{ __('admin.settings') }}
                     </x-nav-link>
                 </div>
@@ -101,7 +101,7 @@
             <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                 {{ __('admin.users') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.*')">
+            <x-responsive-nav-link :href="route('admin.settings')" :active="request()->routeIs('admin.settings.*')">
                 {{ __('admin.settings') }}
             </x-responsive-nav-link>
         </div>
