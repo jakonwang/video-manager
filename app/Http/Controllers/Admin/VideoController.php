@@ -226,41 +226,51 @@ class VideoController extends Controller
             ], 400);
         }
 
-        // 检查文件是否存在
-        // 视频文件存储在 public/videos 目录下
-        $videoPath = $video->path;
-        $fullPath = public_path($videoPath);
-        
-        if (!file_exists($fullPath)) {
+        try {
+            // 获取视频 URL
+            $videoUrl = $video->url;
+            
+            // 记录调试信息
+            Log::info('视频预览请求', [
+                'video_id' => $video->id,
+                'title' => $video->title,
+                'path' => $video->path,
+                'url' => $videoUrl,
+                'processed' => $video->processed,
+                'size' => $video->size
+            ]);
+
+            // 检查 URL 是否有效
+            if (empty($videoUrl) || $videoUrl === asset('videos/default.mp4')) {
+                return response()->json([
+                    'success' => false,
+                    'message' => '视频文件不存在或无法访问'
+                ], 404);
+            }
+
+            // 返回视频预览信息
+            return response()->json([
+                'success' => true,
+                'title' => $video->title,
+                'url' => $videoUrl,
+                'mime_type' => $video->mime_type ?? 'video/mp4',
+                'description' => $video->description,
+                'size' => $video->formatted_size,
+                'category' => $video->category->name ?? '未分类'
+            ]);
+
+        } catch (\Exception $e) {
+            Log::error('视频预览失败', [
+                'video_id' => $video->id,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
             return response()->json([
                 'success' => false,
-                'message' => '视频文件不存在'
-            ], 404);
+                'message' => '视频预览失败: ' . $e->getMessage()
+            ], 500);
         }
-
-        // 返回视频预览信息
-        // 构建正确的URL，直接使用 /videos/ 路径
-        $baseUrl = request()->getSchemeAndHttpHost();
-        $videoUrl = $baseUrl . '/' . $videoPath;
-        
-        // 调试信息
-        \Illuminate\Support\Facades\Log::info('视频预览请求', [
-            'video_id' => $video->id,
-            'path' => $videoPath,
-            'full_path' => $videoUrl,
-            'exists' => file_exists($fullPath),
-            'file_size' => file_exists($fullPath) ? filesize($fullPath) : 0
-        ]);
-        
-        return response()->json([
-            'success' => true,
-            'title' => $video->title,
-            'url' => $videoUrl,  // 确保字段名为'url'，与前端期望的一致
-            'mime_type' => $video->mime_type ?? 'video/mp4',
-            'description' => $video->description,
-            'size' => $video->formatted_size,
-            'category' => $video->category->name ?? '未分类'
-        ]);
     }
 
     public function download(Video $video)

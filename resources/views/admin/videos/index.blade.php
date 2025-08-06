@@ -216,7 +216,7 @@
                                 <div class="flex items-center justify-center space-x-1.5">
                                     @if($video->processed)
                                         <!-- 预览按钮 -->
-                                        <button @click="showPreview = true; videoUrl = '{{ '/' . ltrim($video->path, '/') }}'" class="w-8 h-8 inline-flex items-center justify-center rounded-md bg-indigo-100 text-indigo-600 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-400 dark:hover:bg-indigo-900/50 transition-colors duration-200 group" title="{{ __('admin.preview') }}">
+                                        <button @click="showPreview = true; videoUrl = '{{ $video->url }}'" class="w-8 h-8 inline-flex items-center justify-center rounded-md bg-indigo-100 text-indigo-600 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-400 dark:hover:bg-indigo-900/50 transition-colors duration-200 group" title="{{ __('admin.preview') }}">
                                             <i class="fas fa-eye text-xs group-hover:scale-110 transition-transform duration-200"></i>
                                         </button>
                                         

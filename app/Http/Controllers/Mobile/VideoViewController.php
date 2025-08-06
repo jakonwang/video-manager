@@ -81,18 +81,19 @@ class VideoViewController extends Controller
             }
 
             // 检查视频文件是否存在（使用腾讯云 COS）
-            $cosAdapter = app(\App\Services\CosAdapter::class);
+            $cosAdapter = app('cos.adapter');
             Log::info('Checking video file in COS:', [
                 'video_id' => $video->id,
                 'path' => $video->path,
-                'exists' => $cosAdapter->exists($video->path),
-                'size' => $cosAdapter->exists($video->path) ? $cosAdapter->size($video->path) : 0
+                'exists' => $cosAdapter ? $cosAdapter->exists($video->path) : false,
+                'size' => $cosAdapter && $cosAdapter->exists($video->path) ? $cosAdapter->size($video->path) : 0
             ]);
 
-            if (!$cosAdapter->exists($video->path)) {
+            if (!$cosAdapter || !$cosAdapter->exists($video->path)) {
                 Log::error('Video file not found in COS:', [
                     'video_id' => $video->id,
-                    'path' => $video->path
+                    'path' => $video->path,
+                    'cos_adapter_available' => $cosAdapter ? true : false
                 ]);
 
                 if ($request->expectsJson()) {
@@ -172,12 +173,13 @@ class VideoViewController extends Controller
         }
         
         // 使用腾讯云 COS 存储
-        $cosAdapter = app(\App\Services\CosAdapter::class);
+        $cosAdapter = app('cos.adapter');
         
-        if (!$cosAdapter->exists($video->path)) {
+        if (!$cosAdapter || !$cosAdapter->exists($video->path)) {
             Log::error('Video file not found in COS:', [
                 'video_id' => $videoId,
-                'path' => $video->path
+                'path' => $video->path,
+                'cos_adapter_available' => $cosAdapter ? true : false
             ]);
             abort(404, '视频文件不存在');
         }
@@ -278,8 +280,8 @@ class VideoViewController extends Controller
         }
 
         // 检查视频文件是否存在（使用腾讯云 COS）
-        $cosAdapter = app(\App\Services\CosAdapter::class);
-        if (!$cosAdapter->exists($video->path)) {
+        $cosAdapter = app('cos.adapter');
+        if (!$cosAdapter || !$cosAdapter->exists($video->path)) {
             return response()->json([
                 'success' => false,
                 'message' => __('mobile.video.file_not_found')
@@ -324,8 +326,8 @@ class VideoViewController extends Controller
         }
 
         // 检查视频文件是否存在（使用腾讯云 COS）
-        $cosAdapter = app(\App\Services\CosAdapter::class);
-        if (!$cosAdapter->exists($video->path)) {
+        $cosAdapter = app('cos.adapter');
+        if (!$cosAdapter || !$cosAdapter->exists($video->path)) {
             return response()->json([
                 'success' => false,
                 'message' => __('mobile.video.file_not_found')
